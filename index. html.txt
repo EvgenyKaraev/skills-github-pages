@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f8f8f8;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #d63384;
+        }
+        .timer {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .map {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Приглашаем вас на нашу свадьбу!</h1>
+        <p>Дата: 30 августа 2025 года</p>
+        <p>Место: Бутик-Отель "Манор-House"</p>
+        <div class="timer" id="timer"></div>
+        <iframe class="map" src="https://yandex.ru/maps/org/manor_house/82099081124/?ll=47.247629%2C56.150871&z=16" allowfullscreen="" loading="lazy"></iframe>
+        <h3>Подтвердите участие</h3>
+        <input type="text" placeholder="Ваше имя">
+        <button>Отправить</button>
+    </div>
+    <script>
+        function countdown() {
+            const weddingDate = new Date("August 30, 2025 00:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = weddingDate - now;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("timer").innerHTML = `${days} дн. ${hours} ч. ${minutes} мин.`;
+            }, 1000);
+        }
+        countdown();
+    </script>
+</body>
+</html>
